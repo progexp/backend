@@ -25,6 +25,7 @@ export class AccountsController {
     @UseGuards(AuthGuard)
     @Get('profile')
     getProfile(@CurrentUser('id') id: number) {
+        console.log('this.accountsService.findOneById(id)');
         return this.accountsService.findOneById(id);
     }
 
@@ -35,15 +36,11 @@ export class AccountsController {
         return this.accountsService.create(dto);
     }
 
-    @UseGuards(AuthGuard, RolesGuard)
-    @Roles(Role.Moderator)
     @Get()
     findAll() {
         return this.accountsService.findAll();
     }
 
-    @UseGuards(AuthGuard, RolesGuard)
-    @Roles(Role.Moderator)
     @Get(':id')
     findOneById(@Param('id', ParseIntPipe) id: number) {
         return this.accountsService.findOneById(id);

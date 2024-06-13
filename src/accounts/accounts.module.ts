@@ -5,6 +5,7 @@ import { DatabaseModule } from '../database/database.module';
 import { accountsProviders } from './accounts.providers';
 import { JwtModule } from '@nestjs/jwt';
 import { getJwtConfig } from '../auth/jwt/jwt.config';
+import { Providers } from '../enums/providers';
 
 @Module({
     imports: [
@@ -15,6 +16,6 @@ import { getJwtConfig } from '../auth/jwt/jwt.config';
     ],
     controllers: [AccountsController],
     providers: [AccountsService, ...accountsProviders],
-    exports: [AccountsService]
+    exports: [AccountsService, Providers.Accounts]
 })
 export class AccountsModule {}

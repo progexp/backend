@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Account } from '../accounts/entities/account.entity';
+import { Post } from '../post/entities/post.entity';
 
 export const databaseProviders = [
     {
@@ -16,7 +17,7 @@ export const databaseProviders = [
                 sync: { alter: false }
             });
 
-            sequelize.addModels([Account]);
+            sequelize.addModels([Account, Post]);
             await sequelize.sync();
             return sequelize;
         }
